@@ -2,14 +2,18 @@
   "name": "service",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
+    "debug": "tsc && node main.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "edge": "^7.10.1",
+    "@types/ffi": "^0.2.3",
+    "@types/ref": "0.0.28",
+    "ffi": "^2.3.0",
+    "ref": "^1.3.5",
     "typescript": "^3.9.3"
   }
 }
