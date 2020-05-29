@@ -15,14 +15,14 @@ namespace lib
             return (int)data * -1;
         }
 
-        public object Return9(object data)
-        {
-            return 9;
-        }
-
         public async Task<object> Invoke(object data)
         {
             return 77;
+        }
+
+        public async Task<object> SomeMixedData(object data)
+        {
+            return "{\"name\":\"bob\",\"account\":5000}";
         }
     }
 }

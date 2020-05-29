@@ -5,7 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var edge_js_1 = __importDefault(require("edge-js"));
 try {
-    console.log('Invoke =>');
+    console.log('Invoke default =>');
     var method = edge_js_1.default.func({
         assemblyFile: '../lib/bin/Debug/netstandard2.0/lib.dll',
         typeName: 'lib.Startup',
@@ -31,7 +31,7 @@ catch (e) {
 // }
 //
 try {
-    console.log('ReturnNumbers =>');
+    console.log('Can pass in data  =>');
     var method = edge_js_1.default.func({
         assemblyFile: '../lib/bin/Debug/netstandard2.0/lib.dll',
         typeName: 'lib.Startup',
@@ -39,6 +39,19 @@ try {
     });
     var result = method(4, true);
     console.log("result: " + result);
+}
+catch (e) {
+    console.log("exception " + JSON.stringify(e));
+}
+try {
+    console.log('Can get json object back =>');
+    var method = edge_js_1.default.func({
+        assemblyFile: '../lib/bin/Debug/netstandard2.0/lib.dll',
+        typeName: 'lib.Startup',
+        methodName: 'SomeMixedData' // This must be Func<object,Task<object>>
+    });
+    var result = method({}, true);
+    console.log("result: " + JSON.parse(result).name);
 }
 catch (e) {
     console.log("exception " + JSON.stringify(e));

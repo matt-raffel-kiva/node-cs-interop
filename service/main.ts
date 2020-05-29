@@ -2,7 +2,7 @@ import edge from 'edge-js';
 
 
 try {
-    console.log('Invoke =>');
+    console.log('Invoke default =>');
     const method = edge.func({
         assemblyFile: '../lib/bin/Debug/netstandard2.0/lib.dll',
         typeName: 'lib.Startup',
@@ -31,7 +31,7 @@ try {
 //
 
 try {
-    console.log('ReturnNumbers =>');
+    console.log('Can pass in data  =>');
     const method = edge.func({
         assemblyFile: '../lib/bin/Debug/netstandard2.0/lib.dll',
         typeName: 'lib.Startup',
@@ -40,6 +40,20 @@ try {
 
     const result = method(4, true);
     console.log(`result: ${result}`);
+} catch (e) {
+    console.log(`exception ${JSON.stringify(e)}`);
+}
+
+try {
+    console.log('Can get json object back =>');
+    const method = edge.func<any, string>({
+        assemblyFile: '../lib/bin/Debug/netstandard2.0/lib.dll',
+        typeName: 'lib.Startup',
+        methodName: 'SomeMixedData' // This must be Func<object,Task<object>>
+    });
+
+    const result = method({}, true);
+    console.log(`result: ${JSON.parse(result).name}`);
 } catch (e) {
     console.log(`exception ${JSON.stringify(e)}`);
 }
