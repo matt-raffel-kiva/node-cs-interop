@@ -1,15 +1,28 @@
 ﻿using System;
-using System.Runtime.InteropServices;
-using RGiesecke.DllExport;
+using System.Threading.Tasks;
 
 namespace lib
 {
-    public class ExportedExample
+    public class Startup
     {
-        [DllExport("add", CallingConvention = CallingConvention.Cdecl)]
-        public static int Add(int left, int right)
+        public int Add(int left, int right)
         {
             return left + right;
+        }
+
+        public async Task<object> ReturnNumbers(object data)
+        {
+            return (int)data * -1;
+        }
+
+        public object Return9(object data)
+        {
+            return 9;
+        }
+
+        public async Task<object> Invoke(object data)
+        {
+            return 77;
         }
     }
 }

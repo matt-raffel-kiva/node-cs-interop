@@ -1,17 +1,45 @@
-import ffi from 'ffi';
-import ref from 'ref';
-const int = ref.types.int;
-
-console.log('starting up');
+import edge from 'edge-js';
 
 
-const testPlugin = ffi.Library(
-    './lib.dll',
-    {
-        add: [int, [int, int]],
-    },
-);
+try {
+    console.log('Invoke =>');
+    const method = edge.func({
+        assemblyFile: '/Users/mattraffel/src/temp/node-cs-interop/service/lib.dll',
+        typeName: 'lib.Startup',
+    });
 
-console.log(`calling testPlugin.add(2,2)`);
-const result = testPlugin.add(2,2);
-console.log(`got back ${result}`);
+    const result = method(undefined, true);
+    console.log(`result: ${result}`);
+} catch (e) {
+    console.log(`exception ${JSON.stringify(e)}`);
+}
+
+
+// try {
+//     console.log('Return9 =>');
+//     const method = edge.func({
+//         assemblyFile: '/Users/mattraffel/src/temp/node-cs-interop/service/lib.dll',
+//         typeName: 'lib.Startup',
+//         methodName: 'Return9' // This must be Func<object,Task<object>>
+//     });
+//
+//     const result = method({}, true);
+//     console.log(`result: ${result}`);
+// } catch (e) {
+//     console.log(`exception ${JSON.stringify(e)}`);
+// }
+//
+
+try {
+    console.log('ReturnNumbers =>');
+    const method = edge.func({
+        assemblyFile: '/Users/mattraffel/src/temp/node-cs-interop/service/lib.dll',
+        typeName: 'lib.Startup',
+        methodName: 'ReturnNumbers' // This must be Func<object,Task<object>>
+    });
+
+    const result = method(4, true);
+    console.log(`result: ${result}`);
+} catch (e) {
+    console.log(`exception ${JSON.stringify(e)}`);
+}
