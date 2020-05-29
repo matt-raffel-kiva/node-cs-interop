@@ -4,7 +4,7 @@ import edge from 'edge-js';
 try {
     console.log('Invoke =>');
     const method = edge.func({
-        assemblyFile: '/Users/mattraffel/src/temp/node-cs-interop/service/lib.dll',
+        assemblyFile: '../lib/bin/Debug/netstandard2.0/lib.dll',
         typeName: 'lib.Startup',
     });
 
@@ -33,7 +33,7 @@ try {
 try {
     console.log('ReturnNumbers =>');
     const method = edge.func({
-        assemblyFile: '/Users/mattraffel/src/temp/node-cs-interop/service/lib.dll',
+        assemblyFile: '../lib/bin/Debug/netstandard2.0/lib.dll',
         typeName: 'lib.Startup',
         methodName: 'ReturnNumbers' // This must be Func<object,Task<object>>
     });
